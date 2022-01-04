@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(chooser);
         } else {
             i = new Intent(Intent.ACTION_SEND);
-            i.setData(Uri.parse("mailto"));
+            i.setData(Uri.parse("mailto");
             String to[] = {"mymail@gmail.com"};
             i.putExtra(i.EXTRA_EMAIL, to);
             i.putExtra(i.EXTRA_SUBJECT, "From mymail");
