@@ -9,10 +9,10 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     EditText result;
-    Button zero, one, two, three, four, five, six, seven, eight, nine, equal, plus, minus, divide, multiply, clear;
+    Button zero, one, two, three, four, five, six, seven, eight, nine, equal, plus, minus, divide, multiply, clear, dot;
 
     String text, sign;
-    int sum = 0;
+    float sum = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         minus = (Button) findViewById(R.id.minus);
         divide = (Button) findViewById(R.id.divide);
         multiply = (Button) findViewById(R.id.multiply);
+        dot = (Button) findViewById(R.id.dot);
         clear = (Button) findViewById(R.id.clear);
 
 
@@ -56,15 +57,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         plus.setOnClickListener(this);
         divide.setOnClickListener(this);
         multiply.setOnClickListener(this);
+        dot.setOnClickListener(this);
         equal.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         text = result.getText().toString();
-        if(v.getId() == R.id.zero) {
+        if(v.getId() == R.id.zero)
             result.setText(text + "0");
-        }
         else if (v.getId() == R.id.one)
             result.setText(text + "1");
         else if (v.getId() == R.id.two)
@@ -83,46 +84,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             result.setText(text + "8");
         else if (v.getId() == R.id.nine)
             result.setText(text + "9");
+        else if (v.getId() == R.id.dot)
+            result.setText(text + ".");
         else if (v.getId() == R.id.plus) {
             sign = "+";
-            sum = Integer.valueOf(result.getText().toString());
+            sum = Float.valueOf(result.getText().toString());
             result.setText("");
-        }
-        else if (v.getId() == R.id.minus) {
+        } else if (v.getId() == R.id.minus) {
             sign = "-";
-            sum = Integer.valueOf(result.getText().toString());
+            sum = Float.valueOf(result.getText().toString());
             result.setText("");
-        }
-        else if (v.getId() == R.id.multiply) {
+        } else if (v.getId() == R.id.multiply) {
             sign = "*";
-            sum = Integer.valueOf(result.getText().toString());
+            sum = Float.valueOf(result.getText().toString());
             result.setText("");
-        }
-        else if (v.getId() == R.id.divide) {
+        } else if (v.getId() == R.id.divide) {
             sign = "/";
-            sum = Integer.valueOf(result.getText().toString());
+            sum = Float.valueOf(result.getText().toString());
             result.setText("");
         }
         else if (v.getId() == R.id.equal) {
             if (sign.equals("-")) {
-                sum = sum - Integer.valueOf(result.getText().toString());
+                sum = sum - Float.valueOf(result.getText().toString());
                 result.setText(String.valueOf(sum));
                 sum = 0;
             } else if (sign.equals("+")) {
-                sum = sum + Integer.valueOf(result.getText().toString());
+                sum = sum + Float.valueOf(result.getText().toString());
                 result.setText(String.valueOf(sum));
                 sum = 0;
             } else if (sign.equals("*")) {
-                sum = sum * Integer.valueOf(result.getText().toString());
+                sum = sum * Float.valueOf(result.getText().toString());
                 result.setText(String.valueOf(sum));
                 sum = 0;
             } else if (sign.equals("/")) {
-                sum = sum / Integer.valueOf(result.getText().toString());
+                sum = sum / Float.valueOf(result.getText().toString());
                 result.setText(String.valueOf(sum));
                 sum = 0;
             }
-        }
-        else if(v.getId() == R.id.clear)
+        } else if(v.getId() == R.id.clear)
             result.setText("");
     }
 }
