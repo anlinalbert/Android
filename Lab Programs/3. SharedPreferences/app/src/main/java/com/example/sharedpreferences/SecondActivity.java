@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class SecondActivity extends AppCompatActivity {
@@ -19,8 +18,8 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
 
         sp = getSharedPreferences("MyPref", MODE_PRIVATE);
-        name = (TextView) findViewById(R.id.txt1);
-        email = (TextView) findViewById(R.id.txt2);
+        name = findViewById(R.id.txt1);
+        email = findViewById(R.id.txt2);
 
         if(sp.contains("Name"))
             name.setText(sp.getString("Name",""));
